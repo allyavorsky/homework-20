@@ -1,1 +1,1 @@
-# homework-20
+# Homework 20 | Основи JavaScript: Функції, умовні оператори, та callback-и
