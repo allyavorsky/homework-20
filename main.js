@@ -186,26 +186,6 @@ console.log("#6.14", "    122.01 :", ageClassification(122.01)); // 122.01 : nul
 console.log("#6.15", "    150 :", ageClassification(150)); // 150 : null
 
 /*
- Блок тестирования, везде должны быть true:
- console.log('    -1 :', ageClassification(-1) === null); // -1 : null
- console.log('     0 :', ageClassification(0) === null) // 0 : null
- console.log('     1 :', ageClassification(1) === 'Дитинство'); // 1 : Дитинство
- console.log('    24 :', ageClassification(24) === 'Дитинство'); // 24 : Дитинство
- console.log(' 24.01 :', ageClassification(24.01) === 'Молодість'); // 24.01 : Молодість
- console.log('    44 :', ageClassification(44) === 'Молодість'); // 44 : Молодість
- console.log(' 44.01 :', ageClassification(44.01) === 'Зрілість'); // 44.01 : Зрілість
- console.log('    65 :', ageClassification(65) === 'Зрілість'); // 65 : Зрілість
- console.log('  65.1 :', ageClassification(65.1) === 'Старість'); // 65.1 : Старість
- console.log('    75 :', ageClassification(75) === 'Старість'); // 75 : Старість
- console.log(' 75.01 :', ageClassification(75.01) === 'Довголіття'); // 75.01 : Довголіття
- console.log('    90 :', ageClassification(90) === 'Довголіття'); // 90 : Довголіття
- console.log(' 90.01 :', ageClassification(90.01) === 'Рекорд'); // 90.01 : Рекорд
- console.log('   122 :', ageClassification(122) === 'Рекорд'); // 122 : Рекорд
- console.log('122.01 :', ageClassification(122.01) === null); // 122.01 : null
- console.log('   150 :', ageClassification(150) === null); // 150 : null
-*/
-
-/*
  * #7
  *
  * Створіть функцію oddFn(n), яка приймає параметром число - кількість ітерацій циклу.
@@ -222,9 +202,21 @@ console.log("#6.15", "    150 :", ageClassification(150)); // 150 : null
  * oddFn(20) → [1, 3, 5, 7, 9, 11, 13, 15, 17, 19]
  */
 
-// console.log(oddFn(10)) // [1, 3, 5, 7, 9]
-// console.log(oddFn(15)) // [1, 3, 5, 7, 9, 11, 13, 15]
-// console.log(oddFn(20)) // [1, 3, 5, 7, 9, 11, 13, 15, 17, 19]
+function oddFn(n) {
+  let result = [];
+  let i = 1;
+
+  while (i <= n) {
+    result.push(i);
+    i += 2;
+  }
+
+  return result;
+}
+
+console.log("#7", oddFn(10)); // [1, 3, 5, 7, 9]
+console.log("#7.1", oddFn(15)); // [1, 3, 5, 7, 9, 11, 13, 15]
+console.log("#7.2", oddFn(20)); // [1, 3, 5, 7, 9, 11, 13, 15, 17, 19]
 
 /*
  * #8
@@ -237,32 +229,31 @@ console.log("#6.15", "    150 :", ageClassification(150)); // 150 : null
  * Реалізуйте перевірку: якщо третім параметром передається не функція, потрібно повернути false.
  */
 
-// function mainFunc(a, b, cb) { }
+// main func
+function mainFunc(a, b, cb) {
+  if (typeof cb !== "function") {
+    return false;
+  }
 
-/*
- * Реалізуйте callback функції (cbRandom, cbPow, cbAdd) до основної функції (mainFunc), що повертатимуть відповідні результати обчислень.
- * Використовуйте Math для піднесення до ступеня (Math.pow) та генерації випадкових чисел (Math.floor, Math.random).
- */
+  return cb(a, b);
+}
 
-// cbRandom(a, b) - обчислює і повертає довільне ціле число в діапазоні між a і b включно.
-// function cbRandom(min, max) { }
+// callback
+function cbRandom(min, max) {
+  return Math.floor(Math.random() * (max - min + 1)) + min;
+}
 
-// cbPow(a, b) - обчислює і повертає результат піднесення числа a у ступінь b.
-// function cbPow(num, pow) { }
+// callback num
+function cbPow(num, pow) {
+  return Math.pow(num, pow);
+}
 
-// cbAdd(a, b) - обчислює і повертає суму двох чисел a і b.
-// function cbAdd(a, b) { }
+// callback sum
+function cbAdd(a, b) {
+  return a + b;
+}
 
-/*
- * mainFunc() повинна повертати результат роботи переданої їй поворотної функції, наприклад:
- * mainFunc(2, 5, cbRandom) → випадково від 2 до 5 включно
- * mainFunc(10, 30, cbRandom) → випадково 10..30 включно
- * mainFunc(2, 5, cbPow) → 32
- * mainFunc(2, 5, cbAdd) → 7
- * mainFunc(2, 5, 'not a func') → false
- */
-
-// console.log(mainFunc(2, 5, cbRandom)) // цілі числа в діапазоні 2..5
-// console.log(mainFunc(2, 5, cbPow)) // 32
-// console.log(mainFunc(2, 5, cbAdd)) // 7
-// console.log(mainFunc(2, 5, 'not a func')) // false
+console.log("#8", mainFunc(2, 5, cbRandom)); // rand 2 to 5
+console.log("#8.1", mainFunc(2, 5, cbPow)); // 32
+console.log("#8.2", mainFunc(2, 5, cbAdd)); // 7
+console.log("#8.3", mainFunc(2, 5, "not a func")); // false
